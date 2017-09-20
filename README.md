@@ -1,6 +1,8 @@
-#2017 Principles of Urban Informatics
-##Sean Andrew Chen 
-##sac820@nyu.edu
+# 2017 Principles of Urban Informatics
+## Sean Andrew Chen 
+## sac820@nyu.edu
+
+
 
 #### Setting up shell aliases and environmental variables
 
@@ -26,6 +28,7 @@ export VARIABLE_NAME="variable""
 ![Bash Profile](HW2_sac820/seanchen_HW2_bashprofile.png)
  
 4. Before you can use your new alias and variable, remember to either restart terminal or source your bash profile.
+
 
 
 
