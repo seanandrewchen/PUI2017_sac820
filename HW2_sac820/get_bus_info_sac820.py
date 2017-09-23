@@ -2,13 +2,13 @@ from __future__ import print_function
 import sys
 import requests
 
-#apikey = os.getenv("MTAAPIKEY")
-#busline = "MTA NYCT_B52"
+apikey = os.getenv("MTAAPIKEY")
+busline = "MTA NYCT_B52"
 
-apikey = sys.argv[0]
-busline = "MTA NYCT_" + sys.argv[1]
+#apikey = sys.argv[0]
+#busline = "MTA NYCT_" + sys.argv[1]
 
-parameters = {"key":apikey,"LineRef":busline}
+parameters = {"key": apikey, "LineRef": busline}
 response = requests.get("http://bustime.mta.info/api/siri/vehicle-monitoring.json", params=parameters)
 
 data = response.json()
