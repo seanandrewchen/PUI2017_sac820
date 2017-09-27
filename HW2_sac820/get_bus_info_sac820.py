@@ -47,7 +47,7 @@ with open(cv_name, 'wb') as csvfile:
 
         filewriter.writerow([latitude, longitude, stop_name, stops_from_call])
 
-        print(latitude)
-        print(longitude)
-        print(stop_name)
-        print(stops_from_call)
+        #print(latitude)
+        #print(longitude)
+        #print(stop_name)
+        #print(stops_from_call)
