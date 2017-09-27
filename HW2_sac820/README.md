@@ -54,3 +54,5 @@ would be to the values I wanted.
 
 
 ## Assignment 3
+
+Again, I did all the work by myself. The only help I had was asking Sam Ovenshine how he got his data because the data hub facility was broken. He gave me the link that worked. 
