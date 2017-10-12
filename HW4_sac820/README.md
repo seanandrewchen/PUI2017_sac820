@@ -28,10 +28,7 @@ ANOVA	|
 
 | **Statistical Analyses        |  IV(s)  |  IV type(s) |  DV(s)  |  DV type(s)  |  Control Var | Control Var type  | Question to be answered | _H0_ | alpha | link to paper **|
 |:----------:|:----------|:------------|:-------------|:-------------|:------------|:------------- |:------------------|:----:|:-------:|:-------|
-Multiple Regression   | 40 with 14 main ones | categorical for the most part | 1, did participant feel guilty about food waste| Logit/Binary | They did not really differentiate between variables
-they were controlling for with what they thought were independent variables | N/A | What affects a person's likelihood of feeling guilty about food waste? | As a regression, there really isn't a 
-hypothesis test. One could say that the null hypothesis is that the independent variables have a coefficient of zero on the dependent variable. | For the coefficients in the regression
-there is a 0.05 alpha | See above for link |
+Multiple Regression   | 40 with 14 main ones | categorical for the most part | 1, did participant feel guilty about food waste|Logit/Binary | They did not really differentiate between variables they were controlling for with what they thought were independent variables | N/A | What affects a person's likelihood of feeling guilty about food waste? | As a regression, there really isn't a hypothesis test. One could say that the null hypothesis is that the independent variables have a coefficient of zero on the dependent variable. | For the coefficients in the regression there is a 0.05 alpha | See above for link |
 
 
 
@@ -42,9 +39,7 @@ there is a 0.05 alpha | See above for link |
 
 | **Statistical Analyses        |  IV(s)  |  IV type(s) |  DV(s)  |  DV type(s)  |  Control Var | Control Var type  | Question to be answered | _H0_ | alpha | link to paper **|
 |:----------:|:----------|:------------|:-------------|:-------------|:------------|:------------- |:------------------|:----:|:-------:|:-------|
-Logistic Regression   | 29 | categorical | 1, risk of falling| continuous | Again, there is not much between the control variables and the IV | N/A | What contributes
-to the risk of an elderly person falling and given these variables what is that person's risk? | Like before, there isn't much in terms of a null hypothesis as this is a regression analysis.
-One again could say that the null hypothesis is that the independent variable's coefficients are zero. | The alpha is 0.05 | See above |
+Logistic Regression   | 29 | categorical | 1, risk of falling| continuous | Again, there is not much between the control variables and the IV | N/A | What contributes to the risk of an elderly person falling and given these variables what is that person's risk? | Like before, there isn't much in terms of a null hypothesis as this is a regression analysis.One again could say that the null hypothesis is that the independent variable's coefficients are zero. | The alpha is 0.05 | See above |
 
 
 
