@@ -11,7 +11,7 @@ See CitibikeReview_sac820.md
 
 ## Assignment 2
 
-###ANOVA
+### ANOVA
 ### [The Influence of Emotion on Keyboard Typing: An Experimental Study Using Auditory Stimuli](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0129056)
 
 
@@ -22,7 +22,7 @@ ANOVA	|
 
 
 
-###MULTIPLE REGRESSION
+### MULTIPLE REGRESSION
 ### [Household Food Waste: Multivariate Regression and Principal Components Analyses of Awareness and Attitudes among U.S. Consumers](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159250)
 
 
