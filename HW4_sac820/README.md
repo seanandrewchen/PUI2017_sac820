@@ -17,7 +17,7 @@ See CitibikeReview_sac820.md
 
 | **Statistical Analyses	|  IV(s)  |  IV type(s) |  DV(s)  |  DV type(s)  |  Control Var | Control Var type  | Question to be answered | _H0_ | alpha | link to paper **| 
 |:----------:|:----------|:------------|:-------------|:-------------|:------------|:------------- |:------------------|:----:|:-------:|:-------|
-ANOVA	| 
+ANOVA	| 1 | Continuous | 3 | Continuous | N/A | N/A | How does emotion affect typing? | The effects of emotion on typing latency and duration are zero | 0.05 | See Above |
 
 
 
