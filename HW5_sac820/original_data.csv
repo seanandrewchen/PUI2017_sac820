@@ -1,4 +1,4 @@
-Country/Territory,ISO code,Source,% of homicides by firearm,Number of homicides by firearm,"Homicide by firearm rate per 100,000 pop",Rank by rate of ownership,Average firearms per 100 people,Average total all civilian firearms
+Country,ISO code,Source,% of homicides by firearm,Number of homicides by firearm,"Homicide by firearm rate per 100,000 pop",Rank by rate of ownership,Average firearms per 100 people,Average total all civilian firearms
 Albania,AL,CTS,65.9,56,1.76,70,8.6,270000
 Algeria,DZ,CTS,4.8,20,0.06,78,7.6,1900000
 Angola,AO,,,,,34,17.3,2800000
@@ -39,7 +39,7 @@ Comoros,KM,,,,,127,1.8,11000
 Congo,CG,,,,,122,2.7,100000
 "Congo, Dem Rep",CD,UN-PKO,33.2,248,1.56,137,1.4,800000
 Costa Rica,CR,CTS,57.3,201,4.59,64,9.9,430000
-Câ„¢te dÂ«Ivoire,CI,,,,,124,2.4,400000
+C‰ã¢te dåÇIvoire,CI,,,,,124,2.4,400000
 Croatia,HR,CTS,34.7,17,0.39,26,21.7,950000
 Cuba,CU,WHO-MDB,4.4,27,0.24,104,4.8,545000
 Cyprus,CY,CTS,26.3,5,0.46,6,36.4,275000
