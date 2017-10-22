@@ -14,5 +14,5 @@ Sam Ovenshine (sgo230@nyu.edu) for some clarification.
 
 
 ## Assignment 3
-I did the vast majority of the work by myself. I had some help by asking 
-Sam Ovenshine (sgo230@nyu.edu) for some clarification.
+I had a lot of help from 
+Sam Ovenshine (sgo230@nyu.edu) with fitting the WLS and seaborn..
