@@ -31,6 +31,8 @@ to just print out the ratio of longer trips to all trips made for each user type
 
 ### The Right Test
 Since we are comparing two different population proportions, one could use a simple z proportional two tailed test.
+# FBB *samples* not populations
+
 This is categorical data with a somewhat large sample size. With the large sample size, we do not need to use 
 the Student's T test. Since we don't really have an expectation of which way it should go (or at least I don't)
 we shouldn't use the Chi Squared test. Moreover, it is hard to say what is a success and what is a non success
@@ -38,3 +40,7 @@ in terms of creating a contingency table. One could also perform a Pearson's cor
 Spearman test may be inappropriate as that is based on ranks and we are looking at proportions. In all, however,
 I don't think a correlation coefficient test would be worth much as we are not looking at continuous variables
 but rather two proportions. Thus, a simple two tailed proportional z-test would work. 
+
+# FBB good
+
+# FBB did you ever submit a pull request for this file?? It should be places in your classmate's github HW3 as per instructions

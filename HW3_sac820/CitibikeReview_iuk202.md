@@ -7,3 +7,5 @@ The data does indeed support the project idea. The data contains birth year info
 
 c.
 The appropriate test to test H0 in this case is the t test. The t test would serve this case well because of the normal/parametric distribution of the data in question and because of the presence of two unpaired groups.
+
+# FBB your file did ot have extension md in the name so it did not render properly. otherwise your review should be helpfu to the author, good
