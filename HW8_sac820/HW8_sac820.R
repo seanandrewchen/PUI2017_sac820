@@ -10,6 +10,7 @@
 library(RCurl)
 library(ggplot2)
 library(dplyr)
+library(plotly)
 
 
 ###############################################################################
@@ -19,7 +20,6 @@ library(dplyr)
 ### WARNING: FILE IS 250+MB
 dataFile <- getURL("https://s3.amazonaws.com/aws-website-seanandrewchen-repository-40es3/pui2017_data/NYPD_Motor_Vehicle_Collisions.csv")
 collisionData <- read.csv(textConnection(dataFile), header = TRUE)
-head(collisionData)
 
 
 ###############################################################################
