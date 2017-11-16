@@ -90,50 +90,6 @@ ggplot(hour_avg_counts, aes(x = HOUR, y = count)) +
   theme(plot.title = element_text(size = 16))
 
 
-#QUESTION: What DAY OF THE WEEK are cycle accidents more likely to occur on? 
-# average counts per hour
-daily_group = group_by(cyclistData, MONTH, DAYMONTH, HOUR)
-day_hour_counts = summarise(daily_group, count = n())
-dayweek_group = group_by(day_hour_counts, DAYOFWEEK)
-dayweek_avg_counts = summarise(hour_group, count = mean(count))
-
-# time series: average counts by time of day
-ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + geom_point(colour = "red") + 
-  geom_line(colour = "red", size = 1.5) + 
-  theme_light(base_size = 12) + xlab("Day of Week") + ylab("Count of Incidents") + 
-  scale_x_continuous(breaks=c(0:23)) + 
-  ggtitle("The Average Number of Cyclist-Motorist Incidents by Day of Week") + 
-  theme(plot.title = element_text(size = 16))
-
-ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + 
-  geom_bar(position = "dodge", stat = "identity", fill = "#FF9933") +
-  theme_light(base_size = 12) + labs(x = "Time of day", y = "Count of Incidents") + 
-  scale_x_continuous(breaks=c(0:23)) + 
-  ggtitle("The average number of incident by time of day") + 
-  theme(plot.title = element_text(size = 16))
-
-#QUESTION: What MONTH are traffic fatalities more likely to occur on? 
-# average counts per hour
-daily_group = group_by(cyclistData, MONTH, DAYMONTH, HOUR)
-day_hour_counts = summarise(daily_group, count = n())
-hour_group = group_by(day_hour_counts, HOUR)
-hour_avg_counts = summarise(hour_group, count = mean(count))
-
-# time series: average counts by time of day
-ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + geom_point(colour = "red") + 
-  geom_line(colour = "red", size = 1.5) + 
-  theme_light(base_size = 12) + xlab("Time of day") + ylab("Count of incidents") + 
-  scale_x_continuous(breaks=c(0:23)) + 
-  ggtitle("The average number of incidents by time of day") + 
-  theme(plot.title = element_text(size = 16))
-
-ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + 
-  geom_bar(position = "dodge", stat = "identity", fill = "#FF9933") +
-  theme_light(base_size = 12) + labs(x = "Time of day", y = "Count of Incidents") + 
-  scale_x_continuous(breaks=c(0:23)) + 
-  ggtitle("The average number of incident by time of day") + 
-  theme(plot.title = element_text(size = 16))
-
 ###############################################################################
 ###                     TIMING AND CAUSE OF ACCIDENTS                       ###
 ###############################################################################
