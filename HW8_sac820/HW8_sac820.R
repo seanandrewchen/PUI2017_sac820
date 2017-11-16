@@ -7,9 +7,10 @@
 ###############################################################################
 ###                             IMPORT LIBRARIES                            ###
 ###############################################################################
-library(lubridate)
 library(RCurl)
-library(chron)
+library(ggplot2)
+library(dplyr)
+
 
 
 ###############################################################################
@@ -45,8 +46,13 @@ collisionData$DAYOFWEEK <- collisionData$DATETIME$wday #day of week
 collisionData$DAYMONTH <- collisionData$DATETIME$mday  #day of month
 collisionData$HOUR <- collisionData$DATETIME$hour      #hour
 collisionData$MIN <- collisionData$DATETIME$min        #minute
+collisionData$TIME <- collisionData$HOUR + (collisionData$MIN/60)
 
-collisionData <- collisionData[,!names(collisionData) %in% c("DATE", "BOROUGH", "CONTRIBUTING.FACTOR.VEHICLE.3", "CONTRIBUTING.FACTOR.VEHICLE.4", "CONTRIBUTING.FACTOR.VEHICLE.5", "VEHICLE.TYPE.CODE.3", "VEHICLE.TYPE.CODE.4", "VEHICLE.TYPE.CODE.5", "TIME", "ZIP.CODE", "LATITUDE", "LONGITUDE", "LOCATION", "ON.STREET.NAME", "CROSS.STREET.NAME", "OFF.STREET.NAME", "UNIQUE.KEY")]
+collisionData$DAYOFWEEK <- factor(collisionData$DAYOFWEEK)
+levels(collisionData$DAYOFWEEK) <- c('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
+
+
+collisionData <- collisionData[,!names(collisionData) %in% c("DATE", "CONTRIBUTING.FACTOR.VEHICLE.3", "CONTRIBUTING.FACTOR.VEHICLE.4", "CONTRIBUTING.FACTOR.VEHICLE.5", "VEHICLE.TYPE.CODE.3", "VEHICLE.TYPE.CODE.4", "VEHICLE.TYPE.CODE.5", "ZIP.CODE", "LOCATION", "ON.STREET.NAME", "CROSS.STREET.NAME", "OFF.STREET.NAME", "UNIQUE.KEY")]
 
 
   
@@ -54,8 +60,146 @@ collisionData <- collisionData[,!names(collisionData) %in% c("DATE", "BOROUGH", 
 ###                            FOCUS ON CYCLING                             ###
 ###############################################################################
 cyclistData <- subset(collisionData, VEHICLE.TYPE.CODE.1 == "BICYCLE")
+cyclistData <- subset(cyclistData, select = -c(DATETIME))
+
+
+###############################################################################
+###                         TIMING OF ACCIDENTS                             ###
+###############################################################################
+
+#QUESTION: What TIME OF DAY are cycle accidents more likely to occur on? 
+# average counts per hour
+daily_group = group_by(cyclistData, MONTH, DAYMONTH, HOUR)
+day_hour_counts = summarise(daily_group, count = n())
+hour_group = group_by(day_hour_counts, HOUR)
+hour_avg_counts = summarise(hour_group, count = mean(count))
+
+# time series: average counts by time of day
+ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + geom_point(colour = "red") + 
+  geom_line(colour = "red", size = 1.5) + 
+  theme_light(base_size = 12) + xlab("Time of Day (24 hours)") + ylab("Count of Incidents") + 
+  scale_x_continuous(breaks=c(0:23)) + 
+  ggtitle("The Average Number of Cyclist-Motorist Incidents by Time of Day") + 
+  theme(plot.title = element_text(size = 16))
+
+ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + 
+  geom_bar(position = "dodge", stat = "identity", fill = "#FF9933") +
+  theme_light(base_size = 12) + labs(x = "Time of Day (24 hours)", y = "Count of Incidents") + 
+  scale_x_continuous(breaks=c(0:23)) + 
+  ggtitle("The Average Number of Cyclist-Motorist Incidents by Time of Day") + 
+  theme(plot.title = element_text(size = 16))
+
+
+#QUESTION: What DAY OF THE WEEK are cycle accidents more likely to occur on? 
+# average counts per hour
+daily_group = group_by(cyclistData, MONTH, DAYMONTH, HOUR)
+day_hour_counts = summarise(daily_group, count = n())
+dayweek_group = group_by(day_hour_counts, DAYOFWEEK)
+dayweek_avg_counts = summarise(hour_group, count = mean(count))
+
+# time series: average counts by time of day
+ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + geom_point(colour = "red") + 
+  geom_line(colour = "red", size = 1.5) + 
+  theme_light(base_size = 12) + xlab("Day of Week") + ylab("Count of Incidents") + 
+  scale_x_continuous(breaks=c(0:23)) + 
+  ggtitle("The Average Number of Cyclist-Motorist Incidents by Day of Week") + 
+  theme(plot.title = element_text(size = 16))
+
+ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + 
+  geom_bar(position = "dodge", stat = "identity", fill = "#FF9933") +
+  theme_light(base_size = 12) + labs(x = "Time of day", y = "Count of Incidents") + 
+  scale_x_continuous(breaks=c(0:23)) + 
+  ggtitle("The average number of incident by time of day") + 
+  theme(plot.title = element_text(size = 16))
+
+#QUESTION: What MONTH are traffic fatalities more likely to occur on? 
+# average counts per hour
+daily_group = group_by(cyclistData, MONTH, DAYMONTH, HOUR)
+day_hour_counts = summarise(daily_group, count = n())
+hour_group = group_by(day_hour_counts, HOUR)
+hour_avg_counts = summarise(hour_group, count = mean(count))
+
+# time series: average counts by time of day
+ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + geom_point(colour = "red") + 
+  geom_line(colour = "red", size = 1.5) + 
+  theme_light(base_size = 12) + xlab("Time of day") + ylab("Count of incidents") + 
+  scale_x_continuous(breaks=c(0:23)) + 
+  ggtitle("The average number of incidents by time of day") + 
+  theme(plot.title = element_text(size = 16))
+
+ggplot(hour_avg_counts, aes(x = HOUR, y = count)) + 
+  geom_bar(position = "dodge", stat = "identity", fill = "#FF9933") +
+  theme_light(base_size = 12) + labs(x = "Time of day", y = "Count of Incidents") + 
+  scale_x_continuous(breaks=c(0:23)) + 
+  ggtitle("The average number of incident by time of day") + 
+  theme(plot.title = element_text(size = 16))
+
+###############################################################################
+###                     TIMING AND CAUSE OF ACCIDENTS                       ###
+###############################################################################
+cyclistData <- subset(cyclistData, CONTRIBUTING.FACTOR.VEHICLE.1 != "Unspecified")
+
+hourly_group = group_by(cyclistData, CONTRIBUTING.FACTOR.VEHICLE.1, MONTH, DAYMONTH, HOUR)
+category_day_hour_counts = summarise(hourly_group, count = n())
+category_hourly_group = group_by(category_day_hour_counts, CONTRIBUTING.FACTOR.VEHICLE.1, HOUR)
+category_hour_avg_counts = summarise(category_hourly_group, count = mean(count))
+
+ggplot(category_hour_avg_counts, aes(x = HOUR, y = CONTRIBUTING.FACTOR.VEHICLE.1)) + 
+  geom_tile(aes(fill = count)) + 
+  scale_fill_gradient(name = "Average counts", low = "white", high = "green") +
+  scale_x_continuous(breaks=c(0:23)) + 
+  theme(axis.title.y = element_blank()) + theme_light(base_size = 10) + 
+  theme(plot.title = element_text(size=16)) + 
+  xlab("Cause of Accident") +
+  ylab("Time of Day (24 Hours)") +
+  ggtitle("The Number of Cyclist-Motorist Accidents: Time of Day vs. Cause of Accident")
 
 
 
-#QUESTION: What time of day are traffic fatalities more likely to occur? 
-#QUESTION: What are the leading causes of traffic fatalities?
+###############################################################################
+###                   TIMING, CAUSE OF ACCIDENTS, & BOROUGH                 ###
+###############################################################################
+
+#First timing and borough
+cyclistData <- cyclistData[-which(cyclistData$BOROUGH == ""), ]
+hourly_group = group_by(cyclistData, BOROUGH, MONTH, DAYMONTH, HOUR)
+district_day_hour_counts = summarise(hourly_group, count = n())
+district_hourly_group = group_by(district_day_hour_counts, BOROUGH, HOUR)
+district_hour_avg_counts = summarise(district_hourly_group, count = mean(count))
+
+ggplot(district_hour_avg_counts, aes(x = HOUR, y = BOROUGH)) + 
+  geom_tile(aes(fill = count)) + 
+  scale_fill_gradient(name = "Average Counts", low = "white", high = "green") +
+  scale_x_continuous(breaks=c(0:23)) + 
+  theme(axis.title.y = element_blank()) + theme_light(base_size = 10) + 
+  theme(plot.title = element_text(size = 16)) + 
+  ggtitle("The Number of Accidents: Time of Day vs. Borough")
+
+#Second borough and cause
+category_group = group_by(cyclistData, MONTH, DAYMONTH, BOROUGH, CONTRIBUTING.FACTOR.VEHICLE.1)
+day_district_category_counts = summarise(category_group, count = n())
+district_category_group = group_by(day_district_category_counts, BOROUGH, CONTRIBUTING.FACTOR.VEHICLE.1)
+district_category_avg_counts = summarise(district_category_group, count = mean(count))
+
+ggplot(district_category_avg_counts, aes(x = BOROUGH, y = CONTRIBUTING.FACTOR.VEHICLE.1)) + 
+  geom_tile(aes(fill = count)) + 
+  scale_fill_gradient(name="Average Counts", low="white", high="green") +
+  theme(axis.title.y = element_blank()) + theme_light(base_size = 10) + 
+  theme(plot.title = element_text(size = 16)) + 
+  ggtitle("The Number of Accidents: Borough vs. Cause of Accident") + 
+  theme(axis.text.x = element_text(angle = 45,size = 8, vjust = 0.5)) 
+
+###############################################################################
+###                                 LOCATION                                ###
+###############################################################################
+
+# scatter plot
+cyclistData <- cyclistData[-which(cyclistData$LONGITUDE == ""), ]
+ggplot(cyclistData, aes(x = LONGITUDE, y = LATITUDE)) + geom_point(aes(colour = factor(BOROUGH)), size = 1.25) + 
+  theme_light(base_size = 10) + xlab("X") + ylab("Y") +
+  ggtitle("Borough") + theme(plot.title=element_text(size = 16))
+
+# location by day of week
+ggplot(cyclistData, aes(x = LONGITUDE, y = LATITUDE)) + geom_point(aes(colour = factor(DAYOFWEEK)), size = 1.25) + 
+  theme_light(base_size = 10) + xlab("X") + ylab("Y") +
+  ggtitle("Day of Week") + theme(plot.title=element_text(size = 16))
