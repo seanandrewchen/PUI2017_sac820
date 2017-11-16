@@ -94,20 +94,21 @@ ggplot(hour_avg_counts, aes(x = HOUR, y = count)) +
 ###                     TIMING AND CAUSE OF ACCIDENTS                       ###
 ###############################################################################
 cyclistData <- subset(cyclistData, CONTRIBUTING.FACTOR.VEHICLE.1 != "Unspecified")
+cyclistData$CAUSEOFACCIDENT <- cyclistData$CONTRIBUTING.FACTOR.VEHICLE.1
 
-hourly_group = group_by(cyclistData, CONTRIBUTING.FACTOR.VEHICLE.1, MONTH, DAYMONTH, HOUR)
+hourly_group = group_by(cyclistData, CAUSEOFACCIDENT, MONTH, DAYMONTH, HOUR)
 category_day_hour_counts = summarise(hourly_group, count = n())
-category_hourly_group = group_by(category_day_hour_counts, CONTRIBUTING.FACTOR.VEHICLE.1, HOUR)
+category_hourly_group = group_by(category_day_hour_counts, CAUSEOFACCIDENT, HOUR)
 category_hour_avg_counts = summarise(category_hourly_group, count = mean(count))
 
-ggplot(category_hour_avg_counts, aes(x = HOUR, y = CONTRIBUTING.FACTOR.VEHICLE.1)) + 
+ggplot(category_hour_avg_counts, aes(x = HOUR, y = CAUSEOFACCIDENT)) + 
   geom_tile(aes(fill = count)) + 
-  scale_fill_gradient(name = "Average counts", low = "white", high = "green") +
+  scale_fill_gradient(name = "Average counts", low = "lightgreen", high = "darkgreen") +
   scale_x_continuous(breaks=c(0:23)) + 
   theme(axis.title.y = element_blank()) + theme_light(base_size = 10) + 
   theme(plot.title = element_text(size=16)) + 
-  xlab("Cause of Accident") +
-  ylab("Time of Day (24 Hours)") +
+  ylab("Cause of Accident") +
+  xlab("Time of Day (24 Hours)") +
   ggtitle("The Number of Cyclist-Motorist Accidents: Time of Day vs. Cause of Accident")
 
 
@@ -125,11 +126,11 @@ district_hour_avg_counts = summarise(district_hourly_group, count = mean(count))
 
 ggplot(district_hour_avg_counts, aes(x = HOUR, y = BOROUGH)) + 
   geom_tile(aes(fill = count)) + 
-  scale_fill_gradient(name = "Average Counts", low = "white", high = "green") +
+  scale_fill_gradient(name = "Average Counts", low = "lightgreen", high = "darkgreen") +
   scale_x_continuous(breaks=c(0:23)) + 
   theme(axis.title.y = element_blank()) + theme_light(base_size = 10) + 
   theme(plot.title = element_text(size = 16)) + 
-  ggtitle("The Number of Accidents: Time of Day vs. Borough")
+  ggtitle("The Number of Cyclist-Motorist Accidents: Time of Day vs. Borough")
 
 #Second borough and cause
 category_group = group_by(cyclistData, MONTH, DAYMONTH, BOROUGH, CONTRIBUTING.FACTOR.VEHICLE.1)
@@ -139,10 +140,12 @@ district_category_avg_counts = summarise(district_category_group, count = mean(c
 
 ggplot(district_category_avg_counts, aes(x = BOROUGH, y = CONTRIBUTING.FACTOR.VEHICLE.1)) + 
   geom_tile(aes(fill = count)) + 
-  scale_fill_gradient(name="Average Counts", low="white", high="green") +
+  scale_fill_gradient(name="Average Counts", low="lightgreen", high="darkgreen") +
   theme(axis.title.y = element_blank()) + theme_light(base_size = 10) + 
   theme(plot.title = element_text(size = 16)) + 
-  ggtitle("The Number of Accidents: Borough vs. Cause of Accident") + 
+  ylab("Borough") +
+  xlab("Cause of Accident") +
+  ggtitle("The Number of Cyclist-Motorist Accidents: Borough vs. Cause of Accident") + 
   theme(axis.text.x = element_text(angle = 45,size = 8, vjust = 0.5)) 
 
 ###############################################################################
