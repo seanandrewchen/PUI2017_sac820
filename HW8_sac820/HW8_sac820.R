@@ -153,12 +153,13 @@ ggplot(district_category_avg_counts, aes(x = BOROUGH, y = CONTRIBUTING.FACTOR.VE
 ###############################################################################
 
 # scatter plot
-cyclistData <- cyclistData[-which(cyclistData$LONGITUDE == ""), ]
-ggplot(cyclistData, aes(x = LONGITUDE, y = LATITUDE)) + geom_point(aes(colour = factor(BOROUGH)), size = 1.25) + 
+cyclistData <- cyclistData[!with(cyclistData,is.na("LONGITUDE")& is.na("LATITUDE")),]
+cyclistData <- cyclistData[-which(cyclistData$LONGITUDE == 0 & cyclistData$LATITUDE == 0), ]
+ggplot(cyclistData, aes(x = LONGITUDE, y = LATITUDE)) + geom_point(aes(colour = BOROUGH), size = 1.25) + 
   theme_light(base_size = 10) + xlab("X") + ylab("Y") +
   ggtitle("Borough") + theme(plot.title=element_text(size = 16))
 
 # location by day of week
-ggplot(cyclistData, aes(x = LONGITUDE, y = LATITUDE)) + geom_point(aes(colour = factor(DAYOFWEEK)), size = 1.25) + 
+ggplot(cyclistData, aes(x = LONGITUDE, y = LATITUDE)) + geom_point(aes(colour = DAYOFWEEK), size = 1.25) + 
   theme_light(base_size = 10) + xlab("X") + ylab("Y") +
   ggtitle("Day of Week") + theme(plot.title=element_text(size = 16))
