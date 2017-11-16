@@ -12,7 +12,6 @@ library(ggplot2)
 library(dplyr)
 
 
-
 ###############################################################################
 ###                               READ IN DATA                              ###
 ###############################################################################
@@ -54,11 +53,6 @@ levels(collisionData$DAYOFWEEK) <- c('Sunday', 'Monday', 'Tuesday', 'Wednesday',
 
 collisionData <- collisionData[,!names(collisionData) %in% c("DATE", "CONTRIBUTING.FACTOR.VEHICLE.3", "CONTRIBUTING.FACTOR.VEHICLE.4", "CONTRIBUTING.FACTOR.VEHICLE.5", "VEHICLE.TYPE.CODE.3", "VEHICLE.TYPE.CODE.4", "VEHICLE.TYPE.CODE.5", "ZIP.CODE", "LOCATION", "ON.STREET.NAME", "CROSS.STREET.NAME", "OFF.STREET.NAME", "UNIQUE.KEY")]
 
-
-  
-###############################################################################
-###                            FOCUS ON CYCLING                             ###
-###############################################################################
 cyclistData <- subset(collisionData, VEHICLE.TYPE.CODE.1 == "BICYCLE")
 cyclistData <- subset(cyclistData, select = -c(DATETIME))
 
