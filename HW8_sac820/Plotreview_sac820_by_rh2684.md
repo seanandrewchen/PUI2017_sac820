@@ -2,9 +2,9 @@
 ## Plot review
 
 <p>
-**Plot**: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Number of Cyclist-Motorist Incidents: Time of Day vs. Cause of Accident <br>
-**Author**: &nbsp;&nbsp;&nbsp;&nbsp; Sean Andrew Chen, sac820<br>
-**Reviewer**: &nbsp;Ruben Hambardzumyan, rh2684</p>
+  <b>Plot</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Number of Cyclist-Motorist Incidents: Time of Day vs. Cause of Accident <br>
+  <b>Author</b>: &nbsp;&nbsp;&nbsp;&nbsp; Sean Andrew Chen, sac820<br>
+  <b>Reviewer</b>: &nbsp;Ruben Hambardzumyan, rh2684</p>
 
 ### Clarity:
 
