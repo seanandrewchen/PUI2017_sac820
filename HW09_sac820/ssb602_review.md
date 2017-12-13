@@ -17,3 +17,9 @@ I think it is quite clear with the data. The only thing I might add is that the 
 
 ### OVERALL
 Overall a very elegant and efficient chart. I am conflicted about the stacked bar charts because it is conveying a great deal of information efficiently in a manner that lets us compare data. But, part of that comparison is hard for me to see. Technically, it does let us somewhat in our mind normalize the data: "ah, the critical to non critical ratio looks to be 1:1". But this is somewhat estimating. 
+
+
+# FBB feedback: 
+good, however you missed 2 critical things: the colored bars should be on top of the gray ones, since the visibility of the gray ones would not be impared and plotting them below changing the color greatly confusing the perception. 
+
+the colors are not color blind compliant - they appear indistinguishable by most daltonic perceptions
