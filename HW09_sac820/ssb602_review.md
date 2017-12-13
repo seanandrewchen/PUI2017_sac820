@@ -23,3 +23,5 @@ Overall a very elegant and efficient chart. I am conflicted about the stacked ba
 good, however you missed 2 critical things: the colored bars should be on top of the gray ones, since the visibility of the gray ones would not be impared and plotting them below changing the color greatly confusing the perception. 
 
 the colors are not color blind compliant - they appear indistinguishable by most daltonic perceptions
+
+9/10
