@@ -17,3 +17,9 @@ For the most part, no. It is quite clear and honest in demonstrating its point. 
 
 ### OVERALL
 A clean and crisp map. I'm not sure the latitude and longitude marks are truly necessary. Nor are the outlying islands necessary unless it's to emphasize there are stations there (are there CitiBike stations on Rikers? Or Roosevelt? Or Governors? Or Liberty?).
+
+# FBB good.
+
+in addition, if using labels units should be spelled out, even if it is quite obvious that it is degrees.
+
+10/10
