@@ -3,7 +3,6 @@ import sys
 import requests
 import os
 
-#apikey = "c6d720f6-920e-4e54-8a47-6c82cce327d3"
 #busline = "MTA NYCT_B52"
 
 #Take in command line arguments
